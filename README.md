@@ -2,7 +2,7 @@
 
 ![thumbnail](images/thumbnail.png)
 
-Mark ship log entries that have missing facts required for the Archaeologist achievement as *"There's more to explore here."*. It also lets you view which facts you haven't revealed!
+Marks ship log entries that have missing facts required for the Archaeologist achievement as *"There's more to explore here."*. It also lets you view which facts you haven't revealed!
 
 ## Basic usage
 
@@ -29,3 +29,5 @@ When you activate it the missing facts are shown like this (below the *"There's 
 **Beware of spoilers**, only activate this option if you already beat the game, as this could reveal something important you don't know, although if you are using this mod you probably won the game and you are chasing the achievements.
 
 If even with this option you are still unable to find the missing facts, I suggest going to the [Outer Wilds unofficial Discord server](https://discord.gg/kChJgBMmtd) and asking for help in `#archaeologist-achievement` channel (please remember to let them know which facts you have missing).
+
+The site [outerwilds.ventures](https://outerwilds.ventures/) is also a great resource you can use to complete your entries!
