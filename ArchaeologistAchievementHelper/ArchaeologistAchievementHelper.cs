@@ -24,11 +24,17 @@ namespace ArchaeologistAchievementHelper
         {
             if (_enabled && !__result && __instance.GetState() == ShipLogEntry.State.Explored)
             {
-                foreach (ShipLogFact fact in __instance.GetExploreFacts())
+                if (HasMissingFactForArchaeologistAchievement(__instance))
                 {
-                    if (IsMissingForArcheologhistAchievement(__instance, fact))
+                    __result = true;
+                    return;
+                }
+                foreach (ShipLogEntry childEntry in __instance.GetChildren())
+                {
+                    if (childEntry.GetState() == ShipLogEntry.State.Hidden && HasMissingFactForArchaeologistAchievement(childEntry))
                     {
                         __result = true;
+                        return;
                     }
                 }
             }
@@ -40,18 +46,43 @@ namespace ArchaeologistAchievementHelper
             {
                 foreach (ShipLogFact fact in entry.GetExploreFacts())
                 {
-                    if (IsMissingForArcheologhistAchievement(entry, fact))
+                    if (IsMissingForArchaeologistAchievement(entry, fact))
                     {
-                        // There are enough items (10), entries have up to 6 explore facts, so we need max 7 items
-                        __instance._factListItems[__instance._displayCount].DisplayText($"<color=orange>MISSING FACT: {fact.GetText()}</color>");
-                        __instance._displayCount++;
+                        DisplayMissingInfo(__instance, "MISSING FACT: " + fact.GetText());
+                    }
+                }
+                foreach (ShipLogEntry childEntry in entry.GetChildren())
+                {
+                    if (childEntry.GetState() == ShipLogEntry.State.Hidden && HasMissingFactForArchaeologistAchievement(childEntry))
+                    {
+                        DisplayMissingInfo(__instance, "MISSING SUBENTRY: " + childEntry._name);
                     }
                 }
             }
         }
 
+        private static void DisplayMissingInfo(ShipLogEntryDescriptionField descriptionField, string info)
+        {
+            // There are enough items (10), entries have up to 7 explore facts + childres entries, so we need max 8 items
+            descriptionField._factListItems[descriptionField._displayCount].DisplayText($"<color=orange>{info}</color>");
+            descriptionField._displayCount++;
+        }
+
+        private static bool HasMissingFactForArchaeologistAchievement(ShipLogEntry entry)
+        {
+            foreach (ShipLogFact fact in entry.GetExploreFacts())
+            {
+                if (IsMissingForArchaeologistAchievement(entry, fact))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         // This is based on ShipLogManager.CheckForCompletionAchievement()
-        private static bool IsMissingForArcheologhistAchievement(ShipLogEntry entry, ShipLogFact fact)
+        private static bool IsMissingForArchaeologistAchievement(ShipLogEntry entry, ShipLogFact fact)
         {
             return !fact.IsRumor() && !fact.IsRevealed() &&
                 !fact.GetID().Equals("TH_VILLAGE_X3") && !fact.GetID().Equals("GD_GABBRO_ISLAND_X1") &&
