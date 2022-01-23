@@ -16,13 +16,15 @@ This makes it difficult to know where to find the facts that you are missing for
 
 This feature helps you know in which entries there may be missing facts that you need for the achievement.
 
+The mod also works with missing subentries that have facts required for the achievement, so the mark would also appear if the Zero-G Cave entry was missing.
+
 ## Show all missing facts feature
 
 If you need even more help, you can activate a setting to show all unrevealed facts that Archaeologist requires:
 
 ![settings](images/settings.png)
 
-When you activate it the missing facts are shown like this (below the *"There's more to explore here."* text, with the same color and starting with *"MISSING FACT: "*):
+When you activate it the missing facts and subentries are shown like this (below the *"There's more to explore here."* text, with the same color and starting with *"MISSING FACT: "* or *"MISSING SUBENTRY: "*):
 
 ![example-disabled](images/example-showall.jpg)
 
