@@ -48,14 +48,14 @@ namespace ArchaeologistAchievementHelper
                 {
                     if (IsMissingForArchaeologistAchievement(entry, fact))
                     {
-                        DisplayMissingInfo(__instance, "MISSING FACT: " + fact.GetText());
+                        DisplayMissingInfo(__instance, Texts.GetTranslated(Texts.Text.MissingFact) + ": " + fact.GetText());
                     }
                 }
                 foreach (ShipLogEntry childEntry in entry.GetChildren())
                 {
                     if (childEntry.GetState() == ShipLogEntry.State.Hidden && HasMissingFactForArchaeologistAchievement(childEntry))
                     {
-                        DisplayMissingInfo(__instance, "MISSING SUBENTRY: " + childEntry._name);
+                        DisplayMissingInfo(__instance, Texts.GetTranslated(Texts.Text.MissingSubentrie) + ": " + childEntry._name);
                     }
                 }
             }
