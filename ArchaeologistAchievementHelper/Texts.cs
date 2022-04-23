@@ -25,6 +25,17 @@
                             break;
                     }
                     break;
+                case TextTranslation.Language.RUSSIAN:
+                    switch (text)
+                    {
+                        case Text.MissingFact:
+                            translatedText = "ПРОПУЩЕНА ЗАПИСЬ";
+                            break;
+                        case Text.MissingSubentrie:
+                            translatedText = "ПРОПУЩЕНА СВЯЩЬ";
+                            break;
+                    }
+                    break;
                 case TextTranslation.Language.ENGLISH:
                 default:
                     switch (text)
