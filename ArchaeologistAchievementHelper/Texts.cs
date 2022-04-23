@@ -32,7 +32,7 @@
                             translatedText = "ПРОПУЩЕНА ЗАПИСЬ";
                             break;
                         case Text.MissingSubentrie:
-                            translatedText = "ПРОПУЩЕНА СВЯЩЬ";
+                            translatedText = "ПРОПУЩЕНА СВЯЗЬ";
                             break;
                     }
                     break;
