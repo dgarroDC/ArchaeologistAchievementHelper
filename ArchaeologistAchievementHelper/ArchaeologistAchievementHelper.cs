@@ -5,7 +5,6 @@ namespace ArchaeologistAchievementHelper
 {
     public class ArchaeologistAchievementHelper: ModBehaviour
     {
-        private static bool _enabled;
         private static bool _showMissingFacts;
 
         private void Start()
@@ -16,13 +15,12 @@ namespace ArchaeologistAchievementHelper
 
         public override void Configure(IModConfig config)
         {
-            _enabled = config.Enabled;
             _showMissingFacts = config.GetSettingsValue<bool>("Show missing facts (WARNING: SPOILERS)");
         }
 
         private static void ShipLogEntryHasMoreToExplore(ShipLogEntry __instance, ref bool __result)
         {
-            if (_enabled && !__result && __instance.GetState() == ShipLogEntry.State.Explored)
+            if (!__result && __instance.GetState() == ShipLogEntry.State.Explored)
             {
                 if (HasMissingFactForArchaeologistAchievement(__instance))
                 {
@@ -42,7 +40,7 @@ namespace ArchaeologistAchievementHelper
 
         private static void ShipLogEntryDescriptionFieldSetEntry(ShipLogEntryDescriptionField __instance, ShipLogEntry entry)
         {
-            if (_enabled && _showMissingFacts && entry.GetState() == ShipLogEntry.State.Explored)
+            if (_showMissingFacts && entry.GetState() == ShipLogEntry.State.Explored)
             {
                 foreach (ShipLogFact fact in entry.GetExploreFacts())
                 {
