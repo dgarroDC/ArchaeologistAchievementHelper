@@ -1,16 +1,17 @@
-﻿using OWML.ModHelper;
+﻿using HarmonyLib;
+using OWML.ModHelper;
 using OWML.Common;
 
 namespace ArchaeologistAchievementHelper;
 
+[HarmonyPatch]
 public class ArchaeologistAchievementHelper: ModBehaviour
 {
     private static bool _showMissingFacts;
 
     private void Start()
     {
-        ModHelper.HarmonyHelper.AddPostfix<ShipLogEntry>("HasMoreToExplore", typeof(ArchaeologistAchievementHelper), nameof(ArchaeologistAchievementHelper.ShipLogEntryHasMoreToExplore));
-        ModHelper.HarmonyHelper.AddPostfix<ShipLogEntryDescriptionField>("SetEntry", typeof(ArchaeologistAchievementHelper), nameof(ArchaeologistAchievementHelper.ShipLogEntryDescriptionFieldSetEntry));
+        Harmony.CreateAndPatchAll(System.Reflection.Assembly.GetExecutingAssembly());
     }
 
     public override void Configure(IModConfig config)
@@ -18,6 +19,8 @@ public class ArchaeologistAchievementHelper: ModBehaviour
         _showMissingFacts = config.GetSettingsValue<bool>("Show missing facts (WARNING: SPOILERS)");
     }
 
+    [HarmonyPostfix]
+    [HarmonyPatch(typeof(ShipLogEntry), nameof(ShipLogEntry.HasMoreToExplore))]
     private static void ShipLogEntryHasMoreToExplore(ShipLogEntry __instance, ref bool __result)
     {
         if (!__result && __instance.GetState() == ShipLogEntry.State.Explored)
@@ -38,6 +41,8 @@ public class ArchaeologistAchievementHelper: ModBehaviour
         }
     }
 
+    [HarmonyPostfix]
+    [HarmonyPatch(typeof(ShipLogEntryDescriptionField), nameof(ShipLogEntryDescriptionField.SetEntry))]
     private static void ShipLogEntryDescriptionFieldSetEntry(ShipLogEntryDescriptionField __instance, ShipLogEntry entry)
     {
         if (_showMissingFacts && entry.GetState() == ShipLogEntry.State.Explored)
