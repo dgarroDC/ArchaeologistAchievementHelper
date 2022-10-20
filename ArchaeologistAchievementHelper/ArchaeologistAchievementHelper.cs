@@ -18,7 +18,21 @@ public class ArchaeologistAchievementHelper: ModBehaviour
     public override void Configure(IModConfig config)
     {
         _showMissingFacts = config.GetSettingsValue<bool>("Show missing facts (WARNING: SPOILERS)");
+        bool prevShowMissingEntries = _showMissingEntries;
         _showMissingEntries = config.GetSettingsValue<bool>("Show missing entries (WARNING: SPOILERS)");
+        if (prevShowMissingEntries && !_showMissingEntries)
+        {
+            // We need to hide the cards again
+            ShipLogController shipLogController = FindObjectOfType<ShipLogController>();
+            ShipLogDetectiveMode detectiveMode = (ShipLogDetectiveMode)shipLogController._detectiveMode;
+            foreach (ShipLogEntryCard card in detectiveMode._cardList)
+            {
+                if (card.gameObject.activeSelf && card.GetEntry().GetState() == ShipLogEntry.State.Hidden)
+                {
+                    card.gameObject.SetActive(false); // UpdateStateVisuals()
+                }
+            }
+        }
     }
 
     [HarmonyPostfix]
