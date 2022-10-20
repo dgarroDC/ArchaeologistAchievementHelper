@@ -8,6 +8,7 @@ namespace ArchaeologistAchievementHelper;
 public class ArchaeologistAchievementHelper: ModBehaviour
 {
     private static bool _showMissingFacts;
+    private static bool _showMissingEntries;
 
     private void Start()
     {
@@ -17,13 +18,14 @@ public class ArchaeologistAchievementHelper: ModBehaviour
     public override void Configure(IModConfig config)
     {
         _showMissingFacts = config.GetSettingsValue<bool>("Show missing facts (WARNING: SPOILERS)");
+        _showMissingEntries = config.GetSettingsValue<bool>("Show missing entries (WARNING: SPOILERS)");
     }
 
     [HarmonyPostfix]
     [HarmonyPatch(typeof(ShipLogEntry), nameof(ShipLogEntry.HasMoreToExplore))]
-    private static void ShipLogEntryHasMoreToExplore(ShipLogEntry __instance, ref bool __result)
+    private static void ShipLogEntry_HasMoreToExplore(ShipLogEntry __instance, ref bool __result)
     {
-        if (!__result && __instance.GetState() == ShipLogEntry.State.Explored)
+        if (!__result && __instance._state == ShipLogEntry.State.Explored)
         {
             if (HasMissingFactForArchaeologistAchievement(__instance))
             {
@@ -42,10 +44,20 @@ public class ArchaeologistAchievementHelper: ModBehaviour
     }
 
     [HarmonyPostfix]
-    [HarmonyPatch(typeof(ShipLogEntryDescriptionField), nameof(ShipLogEntryDescriptionField.SetEntry))]
-    private static void ShipLogEntryDescriptionFieldSetEntry(ShipLogEntryDescriptionField __instance, ShipLogEntry entry)
+    [HarmonyPatch(typeof(ShipLogEntry), nameof(ShipLogEntry.GetState))]
+    private static void ShipLogEntry_GetState(ShipLogEntry __instance, ref ShipLogEntry.State __result)
     {
-        if (_showMissingFacts && entry.GetState() == ShipLogEntry.State.Explored)
+        if (_showMissingEntries && __result == ShipLogEntry.State.Hidden && HasMissingFactForArchaeologistAchievement(__instance))
+        {
+            __result = ShipLogEntry.State.Rumored;
+        }
+    }
+
+    [HarmonyPostfix]
+    [HarmonyPatch(typeof(ShipLogEntryDescriptionField), nameof(ShipLogEntryDescriptionField.SetEntry))]
+    private static void ShipLogEntryDescriptionField_SetEntry(ShipLogEntryDescriptionField __instance, ShipLogEntry entry)
+    {
+        if (_showMissingFacts && entry._state == ShipLogEntry.State.Explored)
         {
             foreach (ShipLogFact fact in entry.GetExploreFacts())
             {

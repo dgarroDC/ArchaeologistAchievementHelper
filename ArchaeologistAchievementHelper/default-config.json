@@ -1,6 +1,7 @@
 {
   "enabled": true,
-    "settings": {
-        "Show missing facts (WARNING: SPOILERS)": false
+  "settings": {
+      "Show missing facts (WARNING: SPOILERS)": false,
+      "Show missing entries (WARNING: SPOILERS)": false
     }
 }
