@@ -18,13 +18,17 @@ This feature helps you know in which entries there may be missing facts that you
 
 The mod also works with missing subentries that have facts required for the achievement, so the mark would also appear if the Zero-G Cave entry was missing.
 
-## Show all missing facts feature
+## Settings
 
-If you need even more help, you can activate a setting to show all unrevealed facts that Archaeologist requires:
+If you need even more help, you can activate the following settings:
 
-![settings](images/settings.png)
+![settings](images/settings.jpg)
 
-When you activate it the missing facts and subentries are shown like this (below the *"There's more to explore here."* text, with the same color and starting with *"MISSING FACT: "* or *"MISSING SUBENTRY: "*):
+### Show missing facts
+
+A setting to show all unrevealed facts that Archaeologist requires.
+
+When you activate it, the missing facts and subentries are shown like this (below the *"There's more to explore here."* text, with the same color and starting with *"MISSING FACT: "* or *"MISSING SUBENTRY: "*):
 
 ![example-disabled](images/example-showall.jpg)
 
@@ -33,3 +37,11 @@ When you activate it the missing facts and subentries are shown like this (below
 If even with this option you are still unable to find the missing facts, I suggest going to the [Outer Wilds unofficial Discord server](https://discord.gg/kChJgBMmtd) and asking for help in `#archaeologist-achievement` channel (please remember to let them know which facts you have missing).
 
 The site [outerwilds.ventures](https://outerwilds.ventures/) is also a great resource you can use to complete your entries!
+
+### Show missing entries
+
+A setting to show all unrevealed entries that have facts that Archaeologist requires.
+
+Sometimes it could look like your ship log is complete when it actually isn't because there are entire entries aren't revealed. If you are in this situation, you could enable this setting to show them.
+
+**Beware of spoilers**, the entries will be displayed as rumors (no photos, only the "?") and without facts (the description will be empty) but it with display the real entry name, that could reveal you important information. Don't worry about the DLC, none of the logs added by Echoes of the Eye are required for the achievement, so no information about it would be spoiled by this. 
