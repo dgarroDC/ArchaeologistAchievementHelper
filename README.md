@@ -30,7 +30,7 @@ A setting to show all unrevealed facts that Archaeologist requires.
 
 When you activate it, the missing facts and subentries are shown like this (below the *"There's more to explore here."* text, with the same color and starting with *"MISSING FACT: "* or *"MISSING SUBENTRY: "*):
 
-![example-disabled](images/example-showall.jpg)
+![example-showall-facts](images/example-showall-facts.jpg)
 
 **Beware of spoilers**, only activate this option if you already beat the game, as this could reveal something important you don't know, although if you are using this mod you probably won the game and you are chasing the achievements.
 
@@ -43,5 +43,7 @@ The site [outerwilds.ventures](https://outerwilds.ventures/) is also a great res
 A setting to show all unrevealed entries that have facts that Archaeologist requires.
 
 Sometimes it could look like your ship log is complete when it actually isn't because there are entire entries aren't revealed. If you are in this situation, you could enable this setting to show them.
+
+![example-showall-entries](images/example-showall-entries.png)
 
 **Beware of spoilers**, the entries will be displayed as rumors (no photos, only the "?") and without facts (the description will be empty) but it with display the real entry name, that could reveal you important information. Don't worry about the DLC, none of the logs added by Echoes of the Eye are required for the achievement, so no information about it would be spoiled by this. 
