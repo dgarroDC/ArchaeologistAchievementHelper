@@ -84,7 +84,7 @@ public class ArchaeologistAchievementHelper: ModBehaviour
             {
                 if (childEntry.GetState() == ShipLogEntry.State.Hidden && HasMissingFactForArchaeologistAchievement(childEntry))
                 {
-                    DisplayMissingInfo(__instance, Texts.GetTranslated(Texts.Text.MissingSubentrie) + ": " + childEntry._name);
+                    DisplayMissingInfo(__instance, Texts.GetTranslated(Texts.Text.MissingSubentry) + ": " + childEntry._name);
                 }
             }
         }

@@ -5,7 +5,7 @@
         internal enum Text
         {
             MissingFact,
-            MissingSubentrie
+            MissingSubentry
         }
 
         internal static string GetTranslated(Text text)
@@ -20,7 +20,7 @@
                         case Text.MissingFact:
                             translatedText = "DATO FALTANTE";
                             break;
-                        case Text.MissingSubentrie:
+                        case Text.MissingSubentry:
                             translatedText = "SUBENTRADA FALTANTE";
                             break;
                     }
@@ -31,7 +31,7 @@
                         case Text.MissingFact:
                             translatedText = "ПРОПУЩЕНА ЗАПИСЬ";
                             break;
-                        case Text.MissingSubentrie:
+                        case Text.MissingSubentry:
                             translatedText = "ПРОПУЩЕНА СВЯЗЬ";
                             break;
                     }
@@ -43,8 +43,8 @@
                         case Text.MissingFact:
                             translatedText = "MISSING FACT";
                             break;
-                        case Text.MissingSubentrie:
-                            translatedText = "MISSING SUBENTRIE";
+                        case Text.MissingSubentry:
+                            translatedText = "MISSING SUBENTRY";
                             break;
                     }
                     break;
