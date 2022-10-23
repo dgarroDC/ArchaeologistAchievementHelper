@@ -5,7 +5,8 @@
         internal enum Text
         {
             MissingFact,
-            MissingSubentry
+            MissingSubentry,
+            MissingEntry,
         }
 
         internal static string GetTranslated(Text text)
@@ -23,19 +24,23 @@
                         case Text.MissingSubentry:
                             translatedText = "SUBENTRADA FALTANTE";
                             break;
-                    }
-                    break;
-                case TextTranslation.Language.RUSSIAN:
-                    switch (text)
-                    {
-                        case Text.MissingFact:
-                            translatedText = "ПРОПУЩЕНА ЗАПИСЬ";
-                            break;
-                        case Text.MissingSubentry:
-                            translatedText = "ПРОПУЩЕНА СВЯЗЬ";
+                        case Text.MissingEntry:
+                            translatedText = "ENTRADA FALTANTE";
                             break;
                     }
                     break;
+                // TODO: fix Russian translation
+                // case TextTranslation.Language.RUSSIAN:
+                //     switch (text)
+                //     {
+                //         case Text.MissingFact:
+                //             translatedText = "ПРОПУЩЕНА ЗАПИСЬ";
+                //             break;
+                //         case Text.MissingSubentry:
+                //             translatedText = "ПРОПУЩЕНА СВЯЗЬ";
+                //             break;
+                //     }
+                //     break;
                 case TextTranslation.Language.ENGLISH:
                 default:
                     switch (text)
@@ -45,6 +50,9 @@
                             break;
                         case Text.MissingSubentry:
                             translatedText = "MISSING SUBENTRY";
+                            break;
+                        case Text.MissingEntry:
+                            translatedText = "MISSING ENTRY";
                             break;
                     }
                     break;

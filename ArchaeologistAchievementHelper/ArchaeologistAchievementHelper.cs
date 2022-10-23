@@ -8,19 +8,27 @@ namespace ArchaeologistAchievementHelper;
 public class ArchaeologistAchievementHelper: ModBehaviour
 {
     private static bool _showMissingFacts;
-    private static bool _showMissingEntries;
+    private static ShowMissingEntriesOption _showMissingEntriesOption;
+    private static bool ShowMissingEntries => _showMissingEntriesOption != ShowMissingEntriesOption.Disabled;
 
     private void Start()
     {
         Harmony.CreateAndPatchAll(System.Reflection.Assembly.GetExecutingAssembly());
     }
 
+    private enum ShowMissingEntriesOption
+    {
+        Disabled,
+        Unnamed,
+        Named
+    }
+    
     public override void Configure(IModConfig config)
     {
         _showMissingFacts = config.GetSettingsValue<bool>("Show missing facts (WARNING: SPOILERS)");
-        bool prevShowMissingEntries = _showMissingEntries;
-        _showMissingEntries = config.GetSettingsValue<bool>("Show missing entries (WARNING: SPOILERS)");
-        if (prevShowMissingEntries && !_showMissingEntries)
+        bool prevShowMissingEntries = ShowMissingEntries;
+        _showMissingEntriesOption = config.GetSettingsValue<ShowMissingEntriesOption>("Show missing entries (WARNING: SPOILERS)");
+        if (prevShowMissingEntries && !ShowMissingEntries)
         {
             // We need to hide the cards again
             ShipLogController shipLogController = FindObjectOfType<ShipLogController>();
@@ -61,10 +69,23 @@ public class ArchaeologistAchievementHelper: ModBehaviour
     [HarmonyPatch(typeof(ShipLogEntry), nameof(ShipLogEntry.GetState))]
     private static void ShipLogEntry_GetState(ShipLogEntry __instance, ref ShipLogEntry.State __result)
     {
-        if (_showMissingEntries && __result == ShipLogEntry.State.Hidden && HasMissingFactForArchaeologistAchievement(__instance))
+        if (ShowMissingEntries && __result == ShipLogEntry.State.Hidden && HasMissingFactForArchaeologistAchievement(__instance))
         {
             __result = ShipLogEntry.State.Rumored;
         }
+    }
+
+    [HarmonyPrefix]
+    [HarmonyPatch(typeof(ShipLogEntry), nameof(ShipLogEntry.GetName))]
+    private static bool ShipLogEntry_GetName(ShipLogEntry __instance, ref string __result)
+    {
+        if (_showMissingEntriesOption == ShowMissingEntriesOption.Unnamed && __instance._state == ShipLogEntry.State.Hidden)
+        {
+            __result = Texts.GetTranslated(Texts.Text.MissingEntry);
+            return false;
+        }
+
+        return true;
     }
 
     [HarmonyPostfix]

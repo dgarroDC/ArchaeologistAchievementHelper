@@ -2,6 +2,14 @@
   "enabled": true,
   "settings": {
       "Show missing facts (WARNING: SPOILERS)": false,
-      "Show missing entries (WARNING: SPOILERS)": false
+      "Show missing entries (WARNING: SPOILERS)": {
+        "type": "selector",
+        "value": "Disabled",
+        "options": [
+          "Disabled",
+          "Unnamed",
+          "Named"
+        ]
+      }
     }
 }
