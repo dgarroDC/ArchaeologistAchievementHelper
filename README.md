@@ -6,7 +6,7 @@ Marks ship log entries that have missing facts required for the Archaeologist ac
 
 ## Basic usage
 
-In Outer Wilds, when an entry **isn't** displayed as *"There's more to explore here."* it doesn't mean that all of its facts are revealed, there are some facts that don't affect that mark, and some of them are even required for the Archaeologist achievement. For example, the Timber Hearth Village entry has 2 facts that are needed for the achievement, but this entry is never marked as *"There's more to explore here."*:
+In Outer Wilds, when an ship log entry **isn't** displayed with the *"There's more to explore here."* mark it doesn't mean that all of its facts are revealed. There are some facts that don't affect that mark, and some of them are even required for the Archaeologist achievement. For example, the Timber Hearth Village entry has 2 facts that are needed for the achievement, but this entry is never marked as *"There's more to explore here."*:
 
 ![example-disabled](images/example-disabled.jpg)
 
@@ -44,6 +44,16 @@ A setting to show all unrevealed entries that have facts that Archaeologist requ
 
 Sometimes it could look like your ship log is complete when it actually isn't because there are entire entries aren't revealed. If you are in this situation, you could enable this setting to show them.
 
-![example-showall-entries](images/example-showall-entries.png)
+The entries will be displayed as rumors (no photos, only the orange "?") and without facts (the description will be empty). There are two possible enabled options for this setting: `Unnamed` and `Named` (if you don't want to show the missing entries, select `Disabled`, this is the default option). 
 
-**Beware of spoilers**, the entries will be displayed as rumors (no photos, only the "?") and without facts (the description will be empty) but it with display the real entry name, that could reveal you important information. Don't worry about the DLC, none of the logs added by Echoes of the Eye are required for the achievement, so no information about it would be spoiled by this. 
+With `Unnamed`, the missing entries names will be shown as *"MISSING ENTRY"*:
+
+![example-showall-entries-unnamed](images/example-showall-entries-unnamed.jpg)
+
+With `Named`, the real entry name will be displayed:
+
+![example-showall-entries-named](images/example-showall-entries-named.png)
+
+*The last 3 entry names are blurred in the example image to avoid spoilers*
+
+**Beware of spoilers**, the entry names of the `Named` could reveal you important information, but also the `Unnamed` options is able to spoil you things like the planet of the entry (it could even be one you don't now about) or its position and color in Rumor Mode, but this shouldn't be an issue if you won the game. Don't worry about the DLC, none of the logs added by Echoes of the Eye are required for the achievement, so no information about it would be spoiled by this.
