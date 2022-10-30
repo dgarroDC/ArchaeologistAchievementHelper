@@ -34,10 +34,6 @@ When you activate it, the missing facts and subentries are shown like this (belo
 
 **Beware of spoilers**, only activate this option if you already beat the game, as this could reveal something important you don't know, although if you are using this mod you probably won the game and you are chasing the achievements.
 
-If even with this option you are still unable to find the missing facts, I suggest going to the [Outer Wilds unofficial Discord server](https://discord.gg/kChJgBMmtd) and asking for help in `#archaeologist-achievement` channel (please remember to let them know which facts you have missing).
-
-The site [outerwilds.ventures](https://outerwilds.ventures/) is also a great resource you can use to complete your entries!
-
 ### Show missing entries
 
 A setting to show all unrevealed entries that have facts that Archaeologist requires.
@@ -57,3 +53,9 @@ With `Named`, the real entry name will be displayed:
 *The last 3 entry names are blurred in the example image to avoid spoilers*
 
 **Beware of spoilers**, the entry names of the `Named` could reveal you important information, but also the `Unnamed` options is able to spoil you things like the planet of the entry (it could even be one you don't now about) or its position and color in Rumor Mode, but this shouldn't be an issue if you won the game. Don't worry about the DLC, none of the logs added by Echoes of the Eye are required for the achievement, so no information about it would be spoiled by this.
+
+___
+
+If even with these options you are still unable to find the missing facts, I suggest going to the [Outer Wilds unofficial Discord server](https://discord.gg/kChJgBMmtd) and asking for help in `#archaeologist-achievement` channel (please remember to let them know which facts you have missing).
+
+The site [outerwilds.ventures](https://outerwilds.ventures/) is also a great resource you can use to complete your entries!
